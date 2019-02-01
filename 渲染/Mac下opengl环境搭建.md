@@ -8,12 +8,15 @@
     The OpenGL Extension Wrangler Library is a simple tool that helps C/C++ developers initialize extensions and write portable applications. GLEW currently supports a variety of operating systems, including Windows, Linux, Darwin, Irix, and Solaris.
     OpenGL扩展库是个简单的工具，用于帮助C/C++开发者初始化扩展（OpenGL扩展功能）并书写可移植的应用程序。GLEW当前支持各种各样的操作系统，包含Windows，Linux，Darwin，Irix与Solaris。
 
+###  glad
+    是一个开源的库，功能跟 GLEW 类似。GLAD 使用了一个在线服务（在这里能够告诉 GLAD 需要定义的 OpenGL 版本，并且根据这个版本加载所有相关的 OpenGL 函数）。是一个开源的库，功能跟 GLEW 类似。GLAD 使用了一个在线服务（在这里能够告诉 GLAD 需要定义的 OpenGL 版本，并且根据这个版本加载所有相关的 OpenGL 函数）。
+
+
 ### gult(OpenGL工具库 OpenGL Utility Toolkit)
     GLUT代表OpenGL应用工具包，英文全称为OpenGL Utility Toolkit，是一个独立于窗口系统的工具包，适合学习OpenGL和开发简单的OpenGL应用程序。
 
 ### glfw
-    GLFW is an Open Source, multi-platform library for OpenGL, OpenGL ES and Vulkan development on the desktop. It provides a simple API for creating windows, contexts and surfaces, receiving input and events.
-    一个轻量级的，开源的，跨平台的library。支持OpenGL及OpenGL ES，用来管理窗口，读取输入，处理事件等。因为OpenGL没有窗口管理的功能，所以很多热心的人写了工具来支持这些功能，比如早期的glut，开发目的是用于替代glut的。
+    一个轻量级的，开源的，跨平台的library。专门针对 OpenGL 的 C 语言库，提供了渲染物体所需的最低限度的接口。其允许用户创建 OpenGL 上下文，定义窗口参数以及处理用户输入，把物体渲染到屏幕所需的必要功能。因为OpenGL没有窗口管理的功能，所以很多热心的人写了工具来支持这些功能，比如早期的glut，开发目的是用于替代glut的。
 
 ## 环境配置
 
@@ -34,6 +37,7 @@
     ```
     /usr/local/Cellar/glew/2.1.0/include 
     /usr/local/Cellar/glfw/3.2.1/include
+    /usr/local/include
     ```
     然后找到`Library Search Paths`，在里面添加两项：
     ```
