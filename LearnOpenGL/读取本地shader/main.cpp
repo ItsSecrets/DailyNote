@@ -53,7 +53,7 @@ int main()
     
     // build and compile our shader program
     // ----------------这里需要填绝对路径--------------------
-    Shader* ourShader = new Shader("/Users/zwf/Documents/my_space/DailyNote/渲染/LearnOpenGL/读取本地shader/shader_vertex.vs", "/Users/zwf/Documents/my_space/DailyNote/渲染/LearnOpenGL/读取本地shader/shader_fragment.fs");
+    Shader* ourShader = new Shader("/Users/zwf/Documents/my_space/DailyNote/LearnOpenGL/TextureTest01/shader_vertex.vs", "/Users/zwf/Documents/my_space/DailyNote/LearnOpenGL/TextureTest01/shader_fragment.fs");
     
 //    GLuint loc = glGetUniformLocation(ourShader->ID, "xOffset");
 //    if (loc>0) {

@@ -14,6 +14,12 @@
 #include <iostream>
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.hpp"
+
+#include "glm.hpp"
+#include "matrix_transform.hpp"
+#include "type_ptr.hpp"
+
+
 void processInput(GLFWwindow* window);
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
@@ -53,18 +59,18 @@ int main()
     
     // build and compile our shader program
     // ----------------这里需要填绝对路径--------------------
-    Shader* ourShader = new Shader("/Users/zwf/Documents/my_space/DailyNote/渲染/LearnOpenGL/TextureTest01/texture_shader.vs", "/Users/zwf/Documents/my_space/DailyNote/渲染/LearnOpenGL/TextureTest01/texture_shader.fs");
+    Shader* ourShader = new Shader("/Users/zwf/Documents/my_space/DailyNote/LearnOpenGL/TextureTest01/texture_shader.vs", "/Users/zwf/Documents/my_space/DailyNote/LearnOpenGL/TextureTest01/texture_shader.fs");
     
     
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
-//    float vertices[] = {
-//        // positions          // colors           // texture coords
-//        0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // top right
-//        0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, // bottom right
-//        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // bottom left
-//        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f  // top left
-//    };
+    float vertices[] = {
+        // positions          // colors           // texture coords
+        0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f, // top right
+        0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, // bottom right
+        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f, // bottom left
+        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f  // top left
+    };
     
     //1. 重复图片
 //    float vertices[] = {
@@ -76,14 +82,14 @@ int main()
 //    };
     
     //2. 练习3
-    float vertices[] = {
-        // positions          // colors           // texture coords
-        0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   0.41f, 0.41f, // top right
-        0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   0.41f, 0.1f, // bottom right
-        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.4f, 0.4f, // bottom left
-        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.4f, 0.41f  // top left
-    };
-    
+//    float vertices[] = {
+//        // positions          // colors           // texture coords
+//        0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   0.41f, 0.41f, // top right
+//        0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   0.41f, 0.1f, // bottom right
+//        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.4f, 0.4f, // bottom left
+//        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.4f, 0.41f  // top left
+//    };
+//
     unsigned int indices[] = {
         0, 1, 3, // first triangle
         1, 2, 3  // second triangle
@@ -148,7 +154,7 @@ int main()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINE);
     // load image, create texture and generate mipmaps
     int width, height, nrChannels;
-    unsigned char* data = stbi_load("/Users/zwf/Documents/my_space/DailyNote/渲染/LearnOpenGL/TextureTest01/container.jpg", &width, &height, &nrChannels, 0);
+    unsigned char* data = stbi_load("/Users/zwf/Documents/my_space/DailyNote/LearnOpenGL/TextureTest01/container.jpg", &width, &height, &nrChannels, 0);
     if (data) {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
@@ -169,7 +175,7 @@ int main()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINE);
     glTexParameteri(GL_TEXTURE_2D,  GL_TEXTURE_MAG_FILTER, GL_LINE);
     stbi_set_flip_vertically_on_load(true);
-    data  =  stbi_load("/Users/zwf/Documents/my_space/DailyNote/渲染/LearnOpenGL/TextureTest01/awesomeface.jpg", &width, &height, &nrChannels, 0);
+    data  =  stbi_load("/Users/zwf/Documents/my_space/DailyNote/LearnOpenGL/TextureTest01/awesomeface.jpg", &width, &height, &nrChannels, 0);
     if (data) {
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
@@ -185,6 +191,21 @@ int main()
     glUniform1i(glGetUniformLocation(ourShader->ID, "texture1"), 0);
     ourShader->setInt("texture2", 1);
     
+    
+//    //translate
+//    glm::mat4 trans;
+//    trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
+////    trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
+//
+//    unsigned int transformLoc = glGetUniformLocation(ourShader->ID, "transform");
+//    /**
+//     *   第一个参数你现在应该很熟悉了，它是uniform的位置值。
+//         第二个参数告诉OpenGL我们将要发送多少个矩阵，这里是1。
+//         第三个参数询问我们我们是否希望对我们的矩阵进行置换(Transpose)，也就是说交换我们矩阵的行和列。OpenGL开发者通常使用一种内部矩阵布局，叫做列主序(Column-major Ordering)布局。GLM的默认布局就是列主序，所以并不需要置换矩阵，我们填GL_FALSE。
+//         最后一个参数是真正的矩阵数据，但是GLM并不是把它们的矩阵储存为OpenGL所希望接受的那种，因此我们要先用GLM的自带的函数value_ptr来变换这些数据。
+//     */
+//    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+    
     while (!glfwWindowShouldClose(window)) {
         // input
         processInput(window);
@@ -199,8 +220,17 @@ int main()
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, texture1);
         
+        
+        //translate
+        glm::mat4 trans;
+//        trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+        trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(1.0f, 1.0f, 1.0f));
+
         // render container
         ourShader->use();
+        
+        unsigned int transformLoc = glGetUniformLocation(ourShader->ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
         glBindVertexArray(VAO);
         /**
             *   第一个参数指定了我们绘制的模式，这个和glDrawArrays的一样。
