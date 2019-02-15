@@ -1,7 +1,7 @@
 
 ### 1. dragonBones
-dragonBones相关代码位于引擎 `engine/extension/dragonBones`目录下。
-
+1. dragonBones相关代码位于引擎 `engine/extension/dragonBones`目录下。
+2. 龙骨导出文件包括cat_ske.json（骨骼配置)、cat_tex.json (图集配置)、cat_tex.png (图集图片)三部分组成。目前全局换肤基于不同的猫使用的 **骨骼配置** 和 **图集配置**都是相同的，然后通过替换纹理图片达到全局换肤的目的。
 ### 2.创建流程
 1. 可以通过编辑器拖拽的方式加载
 2. 可以通过代码动态创建
