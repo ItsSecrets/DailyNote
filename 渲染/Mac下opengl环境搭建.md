@@ -48,6 +48,10 @@
     
 2.  最后一步导入Framework 需要用到这三个`OpenGL.framework    libGLEW.2.0.0.dylib    libglfw3.3.2.dylib`。在`Build Phases`中找到`Linked Frameworks and Libraries`, 点击+导入，其中`OpenGL.framework`可以直接导入。`libGLEW.2.0.0.dylib    libglfw3.3.2.dylib`需要去对应目录下添加。
 
+3. 配置GLAD
+    打开GLAD的[在线服务](https://glad.dav1d.de/) ,生成zip压缩文件包含两个头文件目录，和一个glad.c文件。 将两个头文件目录（glad和KHR）复制到你的Include文件夹中（即/usr/local/include），并添加glad.c文件到稍后的工程中。
+    在`Compile Sources`导入`glad.c`文件
+
 3. 至此，环境搭建完毕。
 
 ## 测试
