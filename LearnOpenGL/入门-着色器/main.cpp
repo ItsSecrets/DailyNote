@@ -1,8 +1,8 @@
 //
 //  main.cpp
-//  读取本地shader
+//  入门-着色器
 //
-//  Created by zwf on 2019/1/21.
+//  Created by zwf on 2019/6/9.
 //  Copyright © 2019 zwf. All rights reserved.
 //
 #ifndef MAIN_
@@ -10,8 +10,9 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "Shader.hpp"
+#include "shader.hpp"
 #include <iostream>
+#include <cmath>
 
 void processInput(GLFWwindow* window);
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -52,13 +53,7 @@ int main()
     
     // build and compile our shader program
     // ----------------这里需要填绝对路径--------------------
-    Shader* ourShader = new Shader("/Users/zwf/Documents/my_space/DailyNote/LearnOpenGL/读取本地shader/shader_vertex.vs", "/Users/zwf/Documents/my_space/DailyNote/LearnOpenGL/读取本地shader/shader_fragment.fs");
-    
-//    GLuint loc = glGetUniformLocation(ourShader->ID, "xOffset");
-//    if (loc>0) {
-//        glUniform1f(loc, offset);
-//    }
-    
+    Shader* ourShader = new Shader("/Users/zwf/Documents/my_space/DailyNote/LearnOpenGL/入门-着色器/shader_vertex.vs", "/Users/zwf/Documents/my_space/DailyNote/LearnOpenGL/入门-着色器/shader_fragment.fs");
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
     float vertices[] = {
@@ -74,7 +69,6 @@ int main()
         0.5f, 0.5f, 0.0f,  1.0f, 0.0f, 0.0f,  // top right
         -0.5f, 0.5f, 0.0f,  0.0f, 1.0f, 0.0f,  // top left
         0.0f,  -0.5f, 0.0f,  0.0f, 0.0f, 1.0f   // bottom
-        
     };
     unsigned int VBO, VAO;
     glGenVertexArrays(1, &VAO);
@@ -83,11 +77,11 @@ int main()
     
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     /*
-         glBufferData是一个专门用来把用户定义的数据复制到当前绑定缓冲的函数。它的第一个参数是目标缓冲的类型：顶点缓冲对象当前绑定到GL_ARRAY_BUFFER目标上。第二个参数指定传输数据的大小(以字节为单位)；用一个简单的sizeof计算出顶点数据大小就行。第三个参数是我们希望发送的实际数据。
-        第四个参数指定了我们希望显卡如何管理给定的数据。它有三种形式：
-        GL_STATIC_DRAW ：数据不会或几乎不会改变。
-        GL_DYNAMIC_DRAW：数据会被改变很多。
-        GL_STREAM_DRAW ：数据每次绘制时都会改变。
+     glBufferData是一个专门用来把用户定义的数据复制到当前绑定缓冲的函数。它的第一个参数是目标缓冲的类型：顶点缓冲对象当前绑定到GL_ARRAY_BUFFER目标上。第二个参数指定传输数据的大小(以字节为单位)；用一个简单的sizeof计算出顶点数据大小就行。第三个参数是我们希望发送的实际数据。
+     第四个参数指定了我们希望显卡如何管理给定的数据。它有三种形式：
+     GL_STATIC_DRAW ：数据不会或几乎不会改变。
+     GL_DYNAMIC_DRAW：数据会被改变很多。
+     GL_STREAM_DRAW ：数据每次绘制时都会改变。
      */
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
     
@@ -111,10 +105,16 @@ int main()
         
         //set uniform
         /*
-            *   更新一个uniform之前你必须先使用程序（调用glUseProgram)，因为它是在当前激活的着色器程序中设置uniform的
-            */
-        float offset = 0.5f;
+         *   更新一个uniform之前你必须先使用程序（调用glUseProgram)，因为它是在当前激活的着色器程序中设置uniform的
+         */
+        float offset = 0.1f;
         ourShader->setFloat("xxx", offset);
+        
+        //更新uniformColor
+        float timeValue = glfwGetTime();
+        float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
+        ourShader->setVector4("uniformColor", 0.0f, greenValue, 0.0f, 1.0f);
+        
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
         

@@ -9,7 +9,7 @@ export default class Helloworld extends cc.Component {
 
 
     start () {
-        
+        cc.director.setDisplayStats(true);
     }
 
     onLoad(){
@@ -21,5 +21,9 @@ export default class Helloworld extends cc.Component {
     initDragonBonesTest(){
         let node = cc.instantiate(this.dragonBonesPrefab);
         node.parent = this.node;
+    }
+
+    initJSBindingTest(){
+        this.node.setScale(((this.node.scale == 1) ? 0.5 : 1));
     }
 }

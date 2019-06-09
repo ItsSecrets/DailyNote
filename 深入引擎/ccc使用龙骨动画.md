@@ -2,6 +2,28 @@
 ### 1. dragonBones
 1. dragonBones相关代码位于引擎 `engine/extension/dragonBones`目录下。
 2. 龙骨导出文件包括cat_ske.json（骨骼配置)、cat_tex.json (图集配置)、cat_tex.png (图集图片)三部分组成。目前全局换肤基于不同的猫使用的 **骨骼配置** 和 **图集配置**都是相同的，然后通过替换纹理图片达到全局换肤的目的。
+
+### 2. dragonBones的调用流程
+1. dragonBones分为web版和原生版。web版本在`engine/extensions/dragonbones/lib`目录下。原生版本在`cocos2d-x/cocos/editor-support/dragonbones`目录下。
+2. `dragonBones.ArmatureDisplay`组件在`ctor`中的实现如下：
+```
+ctor: function () {
+    if (CC_JSB) {
+        // TODO Fix me
+        // If using the getFactory in JSB.
+        // There may be throw errors when close the application.
+        this._factory = new dragonBones.CCFactory();
+    } else {
+        this._factory = dragonBones.CCFactory.getInstance();
+    }
+}
+```
+会根据CC_JSB来创建对应平台的`CCFactory`。
+3. 由于web版本的`CCArmatureDisplay`没有实现`_onReplaceTexture`方法，所以web版本不支持全局换肤。
+
+
+
+
 ### 2.创建流程
 1. 可以通过编辑器拖拽的方式加载
 2. 可以通过代码动态创建
@@ -43,7 +65,7 @@
 
 ```
 
-###4. 局部换装
+### 4. 局部换装
 
 ```
 let rurl = cc.url.raw("resources/dragon_res/clo_3.png");
