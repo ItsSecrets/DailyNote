@@ -124,6 +124,12 @@
 		CF63652022ACA154002643D2 /* shader_fragment.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_fragment.fs; sourceTree = "<group>"; };
 		CF63652522ACBF1F002643D2 /* 入门-纹理 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "入门-纹理"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF63652722ACBF1F002643D2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		CF63653022ACDAC6002643D2 /* container.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = container.jpg; sourceTree = "<group>"; };
+		CF63653122ACDAC6002643D2 /* wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wall.jpg; sourceTree = "<group>"; };
+		CF63653222ACDAC6002643D2 /* texture_shader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = texture_shader.fs; sourceTree = "<group>"; };
+		CF63653322ACDAC6002643D2 /* texture_shader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = texture_shader.vs; sourceTree = "<group>"; };
+		CF63653422ACDAC6002643D2 /* awesomeface.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = awesomeface.jpg; sourceTree = "<group>"; };
+		CF63653522ACDAC6002643D2 /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
 		CF92CD66221157CC00523AC4 /* awesomeface.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = awesomeface.jpg; sourceTree = "<group>"; };
 		CF92CD69221158CA00523AC4 /* vec4.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = vec4.hpp; sourceTree = "<group>"; };
 		CF92CD6A221158CA00523AC4 /* integer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = integer.hpp; sourceTree = "<group>"; };
@@ -536,6 +542,12 @@
 		CF63652622ACBF1F002643D2 /* 入门-纹理 */ = {
 			isa = PBXGroup;
 			children = (
+				CF63653422ACDAC6002643D2 /* awesomeface.jpg */,
+				CF63653522ACDAC6002643D2 /* awesomeface.png */,
+				CF63653022ACDAC6002643D2 /* container.jpg */,
+				CF63653222ACDAC6002643D2 /* texture_shader.fs */,
+				CF63653322ACDAC6002643D2 /* texture_shader.vs */,
+				CF63653122ACDAC6002643D2 /* wall.jpg */,
 				CF63652722ACBF1F002643D2 /* main.cpp */,
 			);
 			path = "入门-纹理";
