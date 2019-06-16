@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF26085922B5F5E200ADC73C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF26085822B5F5E200ADC73C /* main.cpp */; };
+		CF26085D22B60CBF00ADC73C /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = CF429BF721DE3932006DC058 /* glad.c */; };
+		CF26085E22B60CC800ADC73C /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF429C2E21DE3DB3006DC058 /* OpenGL.framework */; };
+		CF26085F22B60CDB00ADC73C /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF429BBE21DE32C4006DC058 /* libglfw.3.2.dylib */; };
+		CF26086022B60CF000ADC73C /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF429BBC21DE32B3006DC058 /* libGLEW.2.1.0.dylib */; };
 		CF429BB321DE31F2006DC058 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF429BB221DE31F2006DC058 /* main.cpp */; };
 		CF429BBB21DE329B006DC058 /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF429BBA21DE329B006DC058 /* OpenCL.framework */; };
 		CF429BBD21DE32B3006DC058 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF429BBC21DE32B3006DC058 /* libGLEW.2.1.0.dylib */; };
 		CF429BBF21DE32C4006DC058 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF429BBE21DE32C4006DC058 /* libglfw.3.2.dylib */; };
 		CF429BF821DE3932006DC058 /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = CF429BF721DE3932006DC058 /* glad.c */; };
 		CF429C3621DE3FA0006DC058 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF429C3421DE3FA0006DC058 /* Window.cpp */; };
-		CF5F686A21FEF947007DD0F6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5F686921FEF947007DD0F6 /* main.cpp */; };
 		CF5F686F21FEFC99007DD0F6 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF429C2E21DE3DB3006DC058 /* OpenGL.framework */; };
 		CF5F687021FEFCA8007DD0F6 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF429BBC21DE32B3006DC058 /* libGLEW.2.1.0.dylib */; };
 		CF5F687121FEFCBA007DD0F6 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CF429BBE21DE32C4006DC058 /* libglfw.3.2.dylib */; };
@@ -44,6 +48,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		CF26085422B5F5E200ADC73C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		CF429BAD21DE31F2006DC058 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -101,6 +114,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CF26085622B5F5E200ADC73C /* 入门-变换 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "入门-变换"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF26085822B5F5E200ADC73C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		CF26086122B6116500ADC73C /* container.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = container.jpg; sourceTree = "<group>"; };
+		CF26086222B6116500ADC73C /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
+		CF26086322B6116500ADC73C /* texture_shader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = texture_shader.vs; sourceTree = "<group>"; };
+		CF26086422B6116500ADC73C /* texture_shader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = texture_shader.fs; sourceTree = "<group>"; };
 		CF429BB221DE31F2006DC058 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		CF429BBA21DE329B006DC058 /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
 		CF429BBC21DE32B3006DC058 /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.1.0.dylib; path = ../../../../../../../usr/local/Cellar/glew/2.1.0/lib/libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
@@ -110,14 +129,8 @@
 		CF429C3421DE3FA0006DC058 /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
 		CF429C3521DE3FA0006DC058 /* Window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Window.hpp; sourceTree = "<group>"; };
 		CF5F686721FEF947007DD0F6 /* TextureTest01 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TextureTest01; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF5F686921FEF947007DD0F6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		CF5F687221FF1EEB007DD0F6 /* texture_shader.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = texture_shader.vs; sourceTree = "<group>"; };
-		CF5F687321FF1F00007DD0F6 /* texture_shader.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = texture_shader.fs; sourceTree = "<group>"; };
-		CF5F687421FF302E007DD0F6 /* wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wall.jpg; sourceTree = "<group>"; };
 		CF5F68792200033F007DD0F6 /* stb_image.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stb_image.cpp; sourceTree = "<group>"; };
 		CF5F687A2200033F007DD0F6 /* stb_image.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = stb_image.hpp; sourceTree = "<group>"; };
-		CF5F687C220040CA007DD0F6 /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
-		CF5F687D220040CA007DD0F6 /* container.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = container.jpg; sourceTree = "<group>"; };
 		CF63651422AC9FA3002643D2 /* 入门-着色器 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "入门-着色器"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF63651622AC9FA3002643D2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		CF63651F22ACA154002643D2 /* shader_vertex.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader_vertex.vs; sourceTree = "<group>"; };
@@ -130,7 +143,6 @@
 		CF63653322ACDAC6002643D2 /* texture_shader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = texture_shader.vs; sourceTree = "<group>"; };
 		CF63653422ACDAC6002643D2 /* awesomeface.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = awesomeface.jpg; sourceTree = "<group>"; };
 		CF63653522ACDAC6002643D2 /* awesomeface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = awesomeface.png; sourceTree = "<group>"; };
-		CF92CD66221157CC00523AC4 /* awesomeface.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = awesomeface.jpg; sourceTree = "<group>"; };
 		CF92CD69221158CA00523AC4 /* vec4.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = vec4.hpp; sourceTree = "<group>"; };
 		CF92CD6A221158CA00523AC4 /* integer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = integer.hpp; sourceTree = "<group>"; };
 		CF92CD6B221158CA00523AC4 /* vector_relational.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = vector_relational.hpp; sourceTree = "<group>"; };
@@ -401,6 +413,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CF26085322B5F5E200ADC73C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF26086022B60CF000ADC73C /* libGLEW.2.1.0.dylib in Frameworks */,
+				CF26085F22B60CDB00ADC73C /* libglfw.3.2.dylib in Frameworks */,
+				CF26085E22B60CC800ADC73C /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CF429BAC21DE31F2006DC058 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -464,6 +486,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF26085722B5F5E200ADC73C /* 入门-变换 */ = {
+			isa = PBXGroup;
+			children = (
+				CF26086222B6116500ADC73C /* awesomeface.png */,
+				CF26086122B6116500ADC73C /* container.jpg */,
+				CF26086422B6116500ADC73C /* texture_shader.fs */,
+				CF26086322B6116500ADC73C /* texture_shader.vs */,
+				CF26085822B5F5E200ADC73C /* main.cpp */,
+			);
+			path = "入门-变换";
+			sourceTree = "<group>";
+		};
 		CF429BA621DE31F2006DC058 = {
 			isa = PBXGroup;
 			children = (
@@ -472,9 +506,9 @@
 				CF429BB121DE31F2006DC058 /* LearnOpenGL */,
 				CFB8604121E9E94E005850D9 /* test03 */,
 				CFB5995321F5F57B00D9E35C /* 读取本地shader */,
-				CF5F686821FEF947007DD0F6 /* TextureTest01 */,
 				CF63651522AC9FA3002643D2 /* 入门-着色器 */,
 				CF63652622ACBF1F002643D2 /* 入门-纹理 */,
+				CF26085722B5F5E200ADC73C /* 入门-变换 */,
 				CF429BB921DE329B006DC058 /* Frameworks */,
 				CFB8604021E9E94E005850D9 /* test03 */,
 				CFB5994821F5C30300D9E35C /* LearnOpenGL */,
@@ -482,6 +516,7 @@
 				CF5F686721FEF947007DD0F6 /* TextureTest01 */,
 				CF63651422AC9FA3002643D2 /* 入门-着色器 */,
 				CF63652522ACBF1F002643D2 /* 入门-纹理 */,
+				CF26085622B5F5E200ADC73C /* 入门-变换 */,
 			);
 			sourceTree = "<group>";
 		};
@@ -513,20 +548,6 @@
 				CF429C3521DE3FA0006DC058 /* Window.hpp */,
 			);
 			path = Window;
-			sourceTree = "<group>";
-		};
-		CF5F686821FEF947007DD0F6 /* TextureTest01 */ = {
-			isa = PBXGroup;
-			children = (
-				CF92CD66221157CC00523AC4 /* awesomeface.jpg */,
-				CF5F687C220040CA007DD0F6 /* awesomeface.png */,
-				CF5F687D220040CA007DD0F6 /* container.jpg */,
-				CF5F687421FF302E007DD0F6 /* wall.jpg */,
-				CF5F686921FEF947007DD0F6 /* main.cpp */,
-				CF5F687221FF1EEB007DD0F6 /* texture_shader.vs */,
-				CF5F687321FF1F00007DD0F6 /* texture_shader.fs */,
-			);
-			path = TextureTest01;
 			sourceTree = "<group>";
 		};
 		CF63651522AC9FA3002643D2 /* 入门-着色器 */ = {
@@ -882,6 +903,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CF26085522B5F5E200ADC73C /* 入门-变换 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF26085C22B5F5E200ADC73C /* Build configuration list for PBXNativeTarget "入门-变换" */;
+			buildPhases = (
+				CF26085222B5F5E200ADC73C /* Sources */,
+				CF26085322B5F5E200ADC73C /* Frameworks */,
+				CF26085422B5F5E200ADC73C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "入门-变换";
+			productName = "入门-变换";
+			productReference = CF26085622B5F5E200ADC73C /* 入门-变换 */;
+			productType = "com.apple.product-type.tool";
+		};
 		CF429BAE21DE31F2006DC058 /* LearnOpenGL */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF429BB621DE31F2006DC058 /* Build configuration list for PBXNativeTarget "LearnOpenGL" */;
@@ -993,6 +1031,9 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = zwf;
 				TargetAttributes = {
+					CF26085522B5F5E200ADC73C = {
+						CreatedOnToolsVersion = 9.3.1;
+					};
 					CF429BAE21DE31F2006DC058 = {
 						CreatedOnToolsVersion = 9.3.1;
 					};
@@ -1031,11 +1072,21 @@
 				CF5F686621FEF947007DD0F6 /* TextureTest01 */,
 				CF63651322AC9FA3002643D2 /* 入门-着色器 */,
 				CF63652422ACBF1F002643D2 /* 入门-纹理 */,
+				CF26085522B5F5E200ADC73C /* 入门-变换 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CF26085222B5F5E200ADC73C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF26085D22B60CBF00ADC73C /* glad.c in Sources */,
+				CF26085922B5F5E200ADC73C /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CF429BAB21DE31F2006DC058 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1053,7 +1104,6 @@
 			files = (
 				CF5F687B2200033F007DD0F6 /* stb_image.cpp in Sources */,
 				CF5F6877220002E2007DD0F6 /* glad.c in Sources */,
-				CF5F686A21FEF947007DD0F6 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1097,6 +1147,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		CF26085A22B5F5E200ADC73C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CF26085B22B5F5E200ADC73C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		CF429BB421DE31F2006DC058 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1341,6 +1407,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CF26085C22B5F5E200ADC73C /* Build configuration list for PBXNativeTarget "入门-变换" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF26085A22B5F5E200ADC73C /* Debug */,
+				CF26085B22B5F5E200ADC73C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CF429BAA21DE31F2006DC058 /* Build configuration list for PBXProject "LearnOpenGL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
