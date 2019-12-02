@@ -1,0 +1,25 @@
+// userInfo
+{
+		"userInfo": {
+				"avatarUrl": "str",
+				"level": 34,
+				"nextLevelExp": 15350,
+				"sex": 0,
+				"gameLevel": 19,
+				"remainExp": 740,
+				"totalExp": 14610,
+				"flower": 0,
+				"hookState": 0,      //1标识挂机
+				"uid": "76718674",
+				"vipLevel": 0,
+				"accompanySwitch": 1,
+				"money": 0,
+				"price": 0,
+				"name": "10439",
+				"isFriend": 0,
+				"state": 0,
+				"iconImgLarge": "str",
+				"exp": 930
+		},
+		"cmd": "userInfo"
+}

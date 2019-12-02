@@ -1,0 +1,14 @@
+{
+  "xlsx": {
+  	"type":2,
+    "head": 3,
+    "ignore":4,
+    "src": "./excel/**/[^~$]*.xlsx",
+    "dest": "./json",
+    "arraySeparator": "|",
+    "dts":""
+  },
+  "json": {
+    "uglify": false
+  }
+}

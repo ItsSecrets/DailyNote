@@ -1,0 +1,28 @@
+// roominfo
+{
+		"viewers": ["75659724"],
+		"level": 0,
+		"positions": [{
+			"sid": "0",
+			"status": 1
+		}, {
+			"sid": "1",
+			"status": 1
+		}, {
+			"sid": "2",
+			"status": 1
+		}, {
+			"sid": "3",
+			"user": {
+				"uid": "75659724",
+				"prepared": 1,
+				"owner": 0,
+				"master": 1
+			},
+			"status": 1
+		}],
+		"title": "新扫雷",
+		"roomId": "300344",
+		"observerList": ["75659724"],
+		"cmd": "roominfo"
+}

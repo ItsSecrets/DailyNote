@@ -16,6 +16,8 @@
 #include <sstream>
 #include <iostream>
 
+#include "glm.hpp"
+
 class Shader
 {
 public:
@@ -109,6 +111,16 @@ public:
         glUniform4f(glGetUniformLocation(ID, name.c_str()),x,y,z,w);
     }
     
+    void setMat4(const std::string &name, const GLfloat * mat4)
+    {
+        /**
+             *   第一个参数你现在应该很熟悉了，它是uniform的位置值。
+                 第二个参数告诉OpenGL我们将要发送多少个矩阵，这里是1。
+                 第三个参数询问我们我们是否希望对我们的矩阵进行置换(Transpose)，也就是说交换我们矩阵的行和列。OpenGL开发者通常使用一种内部矩阵布局，叫做列主序(Column-major Ordering)布局。GLM的默认布局就是列主序，所以并不需要置换矩阵，我们填GL_FALSE。
+                 最后一个参数是真正的矩阵数据，但是GLM并不是把它们的矩阵储存为OpenGL所希望接受的那种，因此我们要先用GLM的自带的函数value_ptr来变换这些数据。
+             */
+        glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, mat4);
+    }
     
 private:
     // utility function for checking shader compilation/linking errors.

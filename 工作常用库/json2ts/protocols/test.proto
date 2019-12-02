@@ -1,0 +1,21 @@
+{
+    "exists": true,
+
+    "avatarInfo": {
+        "id":1,
+        "uid":"string",
+        "fromUid":"string",
+        "templateId": "AvatarInteractType", //互动模板id
+        "text":"string" //互动内容
+    },
+
+    "useds": [
+        { "itemId": 1, "templateId": "1000001", "type": 10, "subType": 0, "expireAt": -1, "expireType": 1, "putOn": 1
+        },
+        { "itemId": 3, "templateId": "1000003", "type": 10, "subType": 0, "expireAt": -1, "expireType": 1, "putOn": 1
+        },
+        { "itemId": 4, "templateId": "1000001", "type": 10, "subType": 0, "expireAt": -1, "expireType": 1, "putOn": 0
+        }
+    ],
+    "cmd": "avatarInfo"
+}
