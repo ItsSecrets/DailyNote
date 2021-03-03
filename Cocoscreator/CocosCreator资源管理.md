@@ -43,8 +43,17 @@
 
 2. cc.instantiate实例化后的节点A中某个Sprite节点N通过loadImage加载过贴图B.png(N节点之前使用的是C.PNG)，只释放A的所有依赖就可以了？  
 答：不可以，A的依赖不会包含B.png，必须单独再释放B.png。
-3. cc.loader.getDependsRecursively获取的结果只包含静态的依赖资源，不包括动态添加或替换的。
+
+
+### 4. 优化资源释放
+对于二级弹框和场景资源释放，可以使用cc.loader.release接口配合场景的“自动释放”属性来实现 。
+对于一个二级面板，我们可以约定这个二级面板引用的资源范围。我们把游戏中共用的资源放到Common图集中，把每个二级面板的资源放到自己的图集中。当释放资源的时候，我们可以通过 cc.loader.getDependsRecursively(‘prefab url’) API拿到面板Prefab所引用的所有资源，然后对这个返回的资源数组做资源释放。
+比如，在我们的项目里面，释放资源的时候，我排除了Common，Main，Game/FX目录下面的图集资源：
 ```
+let excludeStr = []
+excludeStr.push("Common");
+excludeStr.push("Main");
+excludeStr.push("Game/FX");
 export function releasePrefabRes(prefabUrl: string, excludeArr?: string[]) {
     var deps = cc.loader.getDependsRecursively(prefabUrl);
     if (deps) {
@@ -61,3 +70,4 @@ export function releasePrefabRes(prefabUrl: string, excludeArr?: string[]) {
     }
 }
 ```
+ 场景的资源释放只需要勾选一个属性就可以了：
