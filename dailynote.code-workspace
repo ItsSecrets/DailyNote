@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../Applications/CocosCreator/Creator/2.4.3/CocosCreator.app/Contents/Resources/engine"
+		},
+		{
+			"path": "../cocoscreator/撸撸猫"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../../../../../Applications/CocosCreator/Creator/2.4.3/CocosCreator.app/Contents/Resources/cocos2d-x"
+		},
+		{
+			"path": "../cocoscreator/Base-pro"
+		}
+	],
+	"settings": {}
+}

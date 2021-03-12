@@ -166,4 +166,62 @@ let tests上下文 = function () {
     var foo2 = 1
 }
 
-tests上下文();
+// tests上下文();
+
+/**
+ * https://www.cnblogs.com/yorkyang/p/10876604.html
+ * 判断是否为循环列表
+ * 快慢指针法， 快的总能追上慢的
+ * @param {*} params 
+ */
+function testLoopList(params) {
+    let slow = head;
+    let fast = head;
+    //判断fast.next是否存在是为了防止fast.next.next不报空指针
+    while(slow && fast && fast.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+        if(slow === fast) return true
+    }
+    return false;
+}
+
+/**
+ * 翻转列表
+ * 反转一个节点的时候，把一个节点的后驱改为指向它前驱就可以了。
+ * 这里需要注意的点就是，当你把当前节点的后驱指向前驱的时候，这个时候链表会被截断，也就是说后面的节点和当前节点分开了，所以我们需要一个变量来保存当前节点的后驱，以访丢失。
+ * @param {*} params 
+ */
+function reverseList(head) {
+    let pre = null;
+    let next = null;
+    while (head) {
+        next = head.next;
+        head.next = pre;
+        pre = head;
+        head = next;
+    }
+
+    return pre;
+}
+/**
+ * 找出环的入口点（起点） 
+ * 当fast按照每次2步，slow每次一步的方式走，发现fastPtr和slowPtr重合，确定了单向链表有环路。
+ * 接下来，让slowPrt回到链表的头部，然后slowPtr和fastPtr各自从自己的位置（fastPtr从两个指针相遇的位置position出发）沿着链表出发，
+ * 每次步长1，那么当fastPtr和slowPtr再次相遇的时候，就是环路的入口了。
+ * @param {*} params 
+ */
+function findEntryList(params) {
+    
+}
+
+/**
+ * 找出环的长度
+ * 从相遇点开始slow和fast继续按照原来的方式向前走slow = slow -> next; fast = fast -> next -> next；直到二者再次项目，此时经过的步数就是环上节点的个数 。
+ * fast和slow没一次操作都会使得两者之间的距离较少1。我们可以把两者相遇的时候看做两者之间的距离正好是整个环的长度r。
+ * 因此，当再次相遇的时候所经过的步数正好是环上节点的数目
+ * @param {*} params 
+ */
+function findLoopLength(params) {
+    
+}
