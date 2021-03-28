@@ -2,6 +2,57 @@
  * call、apply、bind 的区别
  */
 
+ 
+const { log } = require("console");
+
+// Function.prototype.bind1 = function (con) {
+//     let thatFunc = this;
+//     let args = Array.prototype.slice.call(arguments, 1);
+//     return function () {
+//         let bindArgs = Array.prototype.slice.call(arguments);
+//         return thatFunc.apply(con, args.concat(bindArgs));
+//     }
+// }
+
+Function.prototype.bind1 = function (con) {
+    let thatFunc = this;
+    let args = Array.prototype.slice.call(arguments, 1);
+
+    let fNOP = function () { }
+    fNOP.prototype = this.prototype;
+
+    let fBound = function () {
+        let bindArgs = Array.prototype.slice.call(arguments);
+        return thatFunc.apply(this instanceof fNOP ? this : con, args.concat(bindArgs));
+    }
+
+    fBound.prototype = new fNOP();
+    return fBound;
+}
+
+
+
+Function.prototype.bind2 = function (context) {
+
+    if (typeof this !== "function") {
+      throw new Error("Function.prototype.bind - what is trying to be bound is not callable");
+    }
+
+    var self = this;
+    var args = Array.prototype.slice.call(arguments, 1);
+
+    var fNOP = function () {};
+
+    var fBound = function () {
+        var bindArgs = Array.prototype.slice.call(arguments);
+        return self.apply(this instanceof fNOP ? this : context, args.concat(bindArgs));
+    }
+
+    fNOP.prototype = this.prototype;
+    fBound.prototype = new fNOP();
+    return fBound;
+}
+
 let testCallApplyBind = function () {
     var name = "windowsName";
     var a = {
@@ -13,6 +64,17 @@ let testCallApplyBind = function () {
     var b = {
         name: "CherryB",
     }
+
+    var c = {
+        name: "CherryC",
+    }
+    console.log("-------- bind1 ---------");
+    //作用：创建一个新的函数，在 bind() 被调用时，这个新函数的 this 被指定为 bind() 的第一个参数，而其余参数将作为新函数的参数，供调用时使用。
+    a.fn.bind1(c, "params1", "params2")();
+
+    console.log("-------- bind2 ---------");
+    //作用：创建一个新的函数，在 bind() 被调用时，这个新函数的 this 被指定为 bind() 的第一个参数，而其余参数将作为新函数的参数，供调用时使用。
+    a.fn.bind1(c, "params1", "params2")();
     console.log("-------- bind ---------");
     //作用：创建一个新的函数，在 bind() 被调用时，这个新函数的 this 被指定为 bind() 的第一个参数，而其余参数将作为新函数的参数，供调用时使用。
     a.fn.bind(b, "params1", "params2")();
@@ -167,3 +229,196 @@ let tests上下文 = function () {
 }
 
 // tests上下文();
+
+
+/**
+ * 局限性就是
+ * [1,2,2,2,3,4,5,6]
+ * @param {*} arr 
+ * @param {*} val 
+ */
+let binarySearch = function (arr, val) {
+    if (!arr || !val) {
+        return
+    }
+
+    let left = 0;
+    let right = arr.length-1;   //注意
+    let mid;
+
+    while (left <= right) {     //注意
+        mid = Math.floor((left+right)/2);
+        if (arr[mid] == val) {
+            return mid;
+        }else if (arr[mid] < val) {  
+            left = mid+1;       //注意
+        }else if (arr[mid] > val) {
+            right = mid-1;      //注意
+        }
+    }
+
+    return -1;
+}
+
+// let arr = [1,2,3,4,5,6,7,8,9,10]
+let arr = [1,2,2,2,3,4,5,6]
+// console.log(binarySearch(arr, 2));
+
+function ListNode(x){
+    this.val = x;
+    this.next = null;
+}
+let listArr = []
+for (let index = 0; index < 5; index++) {
+    let node = new ListNode(index);
+    listArr.push(node);
+}
+for (let index = 0; index < listArr.length; index++) {
+    const element = listArr[index];
+    element.next = listArr[index+1];
+}
+pHead = listArr[0];
+function logList(pHead) {
+    while (pHead) {
+        log(pHead.val)
+        pHead = pHead.next;
+    }
+}
+/**
+ * https://www.cnblogs.com/yorkyang/p/10876604.html
+ * 判断是否为循环列表
+ * 快慢指针法， 快的总能追上慢的
+ * @param {*} params 
+ */
+function testLoopList(params) {
+    let slow = head;
+    let fast = head;
+    //判断fast.next是否存在是为了防止fast.next.next不报空指针
+    while(slow && fast && fast.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+        if(slow === fast) return true
+    }
+    return false;
+}
+
+/**
+ * 翻转列表
+ * 反转一个节点的时候，把一个节点的后驱改为指向它前驱就可以了。
+ * 这里需要注意的点就是，当你把当前节点的后驱指向前驱的时候，这个时候链表会被截断，也就是说后面的节点和当前节点分开了，所以我们需要一个变量来保存当前节点的后驱，以访丢失。
+ * @param {*} params 
+ */
+function reverseList(head) {
+    let pre = null;
+    let next = null;
+    logList(head)
+    while (head) {
+        next = head.next;
+        head.next = pre;
+        pre = head;
+        head = next;
+    }
+
+    return pre;
+}
+// logList(reverseList(pHead))
+/**
+ * 找出环的入口点（起点） 
+ * 当fast按照每次2步，slow每次一步的方式走，发现fastPtr和slowPtr重合，确定了单向链表有环路。
+ * 接下来，让slowPrt回到链表的头部，然后slowPtr和fastPtr各自从自己的位置（fastPtr从两个指针相遇的位置position出发）沿着链表出发，
+ * 每次步长1，那么当fastPtr和slowPtr再次相遇的时候，就是环路的入口了。
+ * @param {*} params 
+ */
+function findEntryList(params) {
+    if(!head) return null;
+    let slow = head, fast = head;
+    while(fast.next && fast.next.next){
+        fast = fast.next.next;
+        slow = slow.next;
+        if(fast == slow){
+            slow = head;
+            while(fast != slow){
+                 slow = slow.next;
+                 fast = fast.next;
+            }
+            return slow;
+        }
+    }
+    return null;
+}
+
+/**
+ * 找出环的长度
+ * 从相遇点开始slow和fast继续按照原来的方式向前走slow = slow -> next; fast = fast -> next -> next；直到二者再次项目，此时经过的步数就是环上节点的个数 。
+ * fast和slow没一次操作都会使得两者之间的距离较少1。我们可以把两者相遇的时候看做两者之间的距离正好是整个环的长度r。
+ * 因此，当再次相遇的时候所经过的步数正好是环上节点的数目
+ * @param {*} params 
+ */
+function findLoopLength(params) {
+    
+}
+
+/**
+  *  合并有序数组
+  * @param l1 ListNode类 
+  * @param l2 ListNode类 
+  * @return ListNode类
+  * pHead 只作为赋值变量
+  */
+function mergeTwoLists( l1 ,  l2 ) {
+    if(l1 == null && l2 != null) return l2;
+    if(l1 != null && l2 == null) return l1;
+    if(l1 == null && l2 == null) return null;
+    let pHead = new ListNode(-1);
+    let pre = pHead;
+    while(l1 && l2){
+        if(l1.val > l2.val){
+            pHead.next = l2;
+            l2 = l2.next;
+        }else{
+            pHead.next = l1;
+            l1 = l1.next;
+        }
+        pHead = pHead.next;
+    }
+    if(l1){
+        pHead.next = l1;
+    }else if(l2){
+        pHead.next = l2;
+    }
+    return pre.next;
+}
+
+/**
+ *  合并两个有序数组
+ * @param A int整型一维数组 
+ * @param B int整型一维数组 
+ * @return void
+ */
+function insert(arr, val){
+    let insert = false
+   for(let i = 0; i<arr.length; i++){
+       if(val <= arr[i]){
+           arr.splice(i,0,val);
+           insert = true;
+           break;
+       }
+   }
+   if(!insert){
+       arr.splice(arr.length,0,val);
+   }
+}
+
+function merge( A, m, B, n ) {
+    if(m == 0){
+        A.push(...B);
+    
+    }else{
+        for(let i = 0; i < n; i++){
+            insert(A, B[i]);
+        }
+    }
+    log(A)
+}
+merge([1], 1, [2], 1)
+
