@@ -1,5 +1,10 @@
 {
-  "excludeScenes": [],
+  "excludeScenes": [
+    "2d2f792f-a40c-49bb-a189-ed176a246e49",
+    "50164000-4000-4ca3-b7c7-a2607a6752c4",
+    "32dbe8fc-3b1b-4b4b-8e04-b82af3e40171",
+    "a4c6d47d-ae78-49f1-9262-c3867a60a3e7"
+  ],
   "orientation": {
     "landscapeLeft": true,
     "landscapeRight": true,
@@ -7,7 +12,7 @@
     "upsideDown": false
   },
   "packageName": "org.cocos2d.helloworld",
-  "startScene": "32dbe8fc-3b1b-4b4b-8e04-b82af3e40171",
+  "startScene": "f7baafc3-ff88-474b-948d-e46cd2f3f2fc",
   "title": "hello_world",
   "webOrientation": "auto",
   "inlineSpriteFrames": true,
@@ -27,7 +32,7 @@
   },
   "ios": {
     "REMOTE_SERVER_ROOT": "",
-    "packageName": "org.cocos2d.demo"
+    "packageName": "org.cocos2dx.test"
   },
   "mac": {
     "REMOTE_SERVER_ROOT": "",

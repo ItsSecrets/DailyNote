@@ -420,5 +420,5 @@ function merge( A, m, B, n ) {
     }
     log(A)
 }
-merge([1], 1, [2], 1)
+// merge([1], 1, [2], 1)
 

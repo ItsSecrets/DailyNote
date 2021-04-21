@@ -136,7 +136,7 @@ let  testEventLoop = function () {
     console.log('script end');
 }
 
-// testEventLoop()
+testEventLoop()
 
 let tests上下文 = function () {
 

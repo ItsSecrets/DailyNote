@@ -1,7 +1,19 @@
 {
   "collision-matrix": [
     [
+      false,
+      true,
       true
+    ],
+    [
+      true,
+      false,
+      true
+    ],
+    [
+      true,
+      true,
+      false
     ]
   ],
   "excluded-modules": [
@@ -11,7 +23,9 @@
     "SafeArea"
   ],
   "group-list": [
-    "default"
+    "group1",
+    "group2",
+    "group3"
   ],
   "design-resolution-width": 960,
   "design-resolution-height": 640,

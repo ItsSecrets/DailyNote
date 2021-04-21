@@ -14,6 +14,9 @@
 		},
 		{
 			"path": "../cocoscreator/Base-pro"
+		},
+		{
+			"path": "JavaScript/node_modules/websocket"
 		}
 	],
 	"settings": {}

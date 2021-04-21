@@ -1,0 +1,20 @@
+{
+  "__type__": "cc.Material",
+  "_name": "scroll_loop",
+  "_objFlags": 0,
+  "_native": "",
+  "_effectAsset": {
+    "__uuid__": "1eaf9513-3230-486b-becd-1d22c35d72ca"
+  },
+  "_techniqueIndex": 0,
+  "_techniqueData": {
+    "0": {
+      "defines": {
+        "USE_TEXTURE": true
+      },
+      "props": {
+        "time": 0.1
+      }
+    }
+  }
+}
